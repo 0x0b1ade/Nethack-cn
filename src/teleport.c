@@ -1686,7 +1686,7 @@ rloc_to_core(struct monst *mtmp, coordxy x, coordxy y, unsigned rlocflags)
                                                         : "更远处");
         } else {
             pline("%s%s%s%s%s!", appearmsg ? Amonnam(mtmp) : Monnam(mtmp),
-                  appearmsg ? "突然" : "", !Blind ? "出现" : "到达", (next ? "在" : nearu ? "在" : "")
+                  appearmsg ? "突然" : "", !Blind ? "出现" : "到达", (next ? "在" : (nearu ? "在" : "")),
                   next    ? next
                   : nearu ? nearu
                           : "了");

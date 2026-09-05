@@ -2282,7 +2282,7 @@ print_branch(winid win, int dnum, int lower_bound, int upper_bound,
     for (br = svb.branches; br; br = br->next) {
         if (br->end1.dnum == dnum && lower_bound < br->end1.dlevel
             && br->end1.dlevel <= upper_bound) {
-            Sprintf(buf, "%c 到%s的%s: %d",
+            Sprintf(buf, "%c 通往%s的%s: %d",
                     bymenu ? chr_u_on_lvl(&br->end1) : ' ',
                     svd.dcname[br->end2.dnum], br_string(br->type), /*修改语序:br_string(br->type), svd.dungeons[br->end2.dnum].dname,*/
                     depth(&br->end1));
