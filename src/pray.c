@@ -1806,12 +1806,20 @@ bestow_artifact(uchar max_giftvalue)
             if (otmp->cursed)
                 uncurse(otmp);
             otmp->oerodeproof = TRUE;
-            Strcpy(buf, (Hallucination ? "一件小玩意儿"
-                            : Blind ? "一个物体"
-                            : ansimpleoname(otmp)));
-            if (!Blind)
+            if (Blind) {
+                Strcpy(buf, "一个物体");
+            } else if (Hallucination) {
+                Strcpy(buf, "一件小玩意儿");
                 Sprintf(eos(buf), " (名为%s)",
                         bare_artifactname(otmp));
+            } else {
+                char namebuf[BUFSZ];
+
+                Strcpy(namebuf, simpleonames(otmp));
+                Sprintf(buf, "一%s名为%s的%s",
+                        quantifier(otmp), bare_artifactname(otmp),
+                        namebuf);
+            }
             at_your_feet(upstart(buf));
             dropy(otmp);
             godvoice(u.ualign.type, "善用吾赏!");
