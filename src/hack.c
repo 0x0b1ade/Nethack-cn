@@ -474,7 +474,7 @@ moverock_core(coordxy sx, coordxy sy)
                     Strcpy(you_or_steed,
                            u.usteed ? y_monnam(u.usteed) : "你");
                     pline("%s%s推不动%s.",
-                          deliver_part1 ? "也许那就是为什么" : "",
+                          deliver_part1 ? "也许正因如此, 所以" : "",
                           deliver_part1 ? you_or_steed
                                         : upstart(you_or_steed),
                           deliver_part1 ? "它" : the(xname(otmp)));
