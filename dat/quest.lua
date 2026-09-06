@@ -2536,7 +2536,7 @@ questtext = {
       killed_nemesis = {
          synopsis = "[%nC临死, 诅咒于你. ]",
          output = "text",
-         text = [[你转向%n. 他的凡躯
+         text = [[你转向%n. 他的肉身
 在你眼前开始消散, 你听见他诅咒道:
 
     "你永远也甩不掉我, %p!

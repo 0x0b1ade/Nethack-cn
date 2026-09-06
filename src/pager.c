@@ -1775,7 +1775,7 @@ do_screen_description(
                 (void) ice_descr(cc.x, cc.y, look_buf);
             if (!strcmp(look_buf, "下行楼梯")
                 && on_level(&u.uz, &qstart_level) && !ok_to_quest())
-                Strcpy(look_buf, "堵塞的行楼梯");
+                Strcpy(look_buf, "堵塞的下行楼梯");
 
             if (look_buf[0] != '\0')
                 *firstmatch = look_buf;
