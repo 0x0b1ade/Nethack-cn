@@ -2276,15 +2276,20 @@ doname_base(
     prefix[0] = '\0';
     if (obj->quan /*!= 1L*/) {
         if (dknown || !vague_quan) {
-            if (with_space) {
-                if (obj->quan != 1L || force_quan) {
-                    Sprintf(prefix, "%ld %s", obj->quan, quantifier(obj));
-                }
-            } else {
-                if (obj->quan != 1L || force_quan) {
-                    Sprintf(prefix, "%ld%s", obj->quan, quantifier(obj));
-                } else if (obj->quan == 1L) {
-                    Sprintf(prefix, "一%s", quantifier(obj));
+            /* 独特怪/人名怪物(岩德巫师等)尸体只有一个, 不显示数量 */
+            if (obj->otyp != CORPSE || !ismnum(obj->corpsenm)
+                || !(the_unique_pm(&mons[obj->corpsenm])
+                     || type_is_pname(&mons[obj->corpsenm]))) {
+                if (with_space) {
+                    if (obj->quan != 1L || force_quan) {
+                        Sprintf(prefix, "%ld %s", obj->quan, quantifier(obj));
+                    }
+                } else {
+                    if (obj->quan != 1L || force_quan) {
+                        Sprintf(prefix, "%ld%s", obj->quan, quantifier(obj));
+                    } else if (obj->quan == 1L) {
+                        Sprintf(prefix, "一%s", quantifier(obj));
+                    }
                 }
             }
         }
@@ -3019,12 +3024,14 @@ corpse_xname(
                                                                : "";
     if (!adjective || !*adjective) {
         Strcat(nambuf, gndr);
-        /* normal case:  newt corpse */
+        /* normal case:  newt corpse; 专有名词补"的" */
         Strcat(nambuf, mnam);
+        if (possessive)
+            Strcat(nambuf, "的");
     } else {
         /* adjective positioning depends upon format of monster name */
-        if (possessive) /* Medusa's cursed partly eaten corpse */
-            Sprintf(eos(nambuf), "%s%s%s", mnam, gndr, adjective);
+        if (possessive) /* 专有名词(独特怪/人名): "岩德巫师的尸体", 计数已在doname避免 */
+            Sprintf(eos(nambuf), "%s%s%s%s", mnam, gndr, "的", adjective);
         else /* cursed partly eaten troll corpse */
             Sprintf(eos(nambuf), "%s%s%s", adjective, gndr, mnam);
         /* in case adjective has a trailing space, squeeze it out */
