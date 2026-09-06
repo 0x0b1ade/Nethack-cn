@@ -222,7 +222,7 @@ throne_sit_effect(void)
        started from.]  "Analyzing a throne" doesn't really make any sense
        but if the answer is yes than it will vanish in a puff of logic. */
     if (!special_throne &&
-        !rn2(3) && (!wizard || y_n("Analyze throne?") == 'y')) {
+        !rn2(3) && (!wizard || y_n("分解王座?") == 'y')) {
         levl[tx][ty].typ = ROOM, levl[tx][ty].flags = 0;
         map_background(tx, ty, FALSE);
         newsym_force(tx, ty);
