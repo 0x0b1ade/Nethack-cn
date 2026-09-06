@@ -1330,7 +1330,7 @@ doup(void)
     if (ledger_no(&u.uz) == 1) {
         if (iflags.debug_fuzzer)
             return ECMD_OK;
-        if (y_n("Beware, there will be no return!  Still climb?") != 'y')
+        if (y_n("请注意, 此路不归!  还要继续爬上去吗?") != 'y')
             return ECMD_OK;
     }
     if (!next_to_u()) {
