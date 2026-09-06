@@ -1476,7 +1476,7 @@ really_done(int how)
         } else {
             Strcat(pbuf, "");
         }
-        Sprintf(eos(pbuf), "带着%ld点%s, %s",
+        Sprintf(eos(pbuf), "带着%ld点分数%s, %s",
                 u.urexp, plur(u.urexp), /*修改语序:(how == ASCENDED) ? "得到了应有的回报"*/
                 (how == ASCENDED) ? "得到了应有的回报" /*修改语序:  : "逃离了地牢",*/
                 : "逃离了地牢"); /*修改语序:u.urexp, plur(u.urexp));*/

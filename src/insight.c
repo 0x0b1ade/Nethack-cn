@@ -2202,11 +2202,11 @@ show_conduct(int final)
                         (u.uconduct.wisharti > 2L) ? "全是"
                           : (u.uconduct.wisharti == 2L) ? "都是" : "");
             else
-                Sprintf(eos(buf), " (%ld ", u.uconduct.wisharti);
+                Sprintf(eos(buf), " (%ld个", u.uconduct.wisharti);
 
             Sprintf(eos(buf), "%s)",
-                    (u.uconduct.wisharti == 1L) ? "1 神器"
-                                                : "神器");
+                    //(u.uconduct.wisharti == 1L) ? "1 神器" :
+                                                  "神器");
         }
         you_have_X(buf);
 

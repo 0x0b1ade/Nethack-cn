@@ -340,12 +340,6 @@ priestname(
             Strcpy(pname, "一个");*/
         Strcat(pname, "隐形的");
     }
-    if (mon->isminion && EMIN(mon)->renegade) {
-        /* avoid "an renegade Angel" */
-        /*冗余:if (!strcmp(pname, "an") && !mon->minvis)
-            Strcpy(pname, "一个");*/
-        Strcat(pname, "反叛的");
-    }
 
     /* same as distant_monnam(), more or less... */
     if (do_hallu || !high_priest || reveal_high_priest
@@ -353,6 +347,12 @@ priestname(
         || m_next2u(mon) || program_state.gameover) {
         Strcat(pname, halu_gname(mon_aligntyp(mon)));
         Strcat(pname, "的");
+    }
+    if (mon->isminion && EMIN(mon)->renegade) { //修改语序:原本应该放在前面
+        /* avoid "an renegade Angel" */
+        /*冗余:if (!strcmp(pname, "an") && !mon->minvis)
+            Strcpy(pname, "一个");*/
+        Strcat(pname, "叛逆");
     }
     if (mon->ispriest || aligned_priest) {
         if (high_priest)
