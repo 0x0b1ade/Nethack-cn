@@ -2126,8 +2126,8 @@ Hello(struct monst *mtmp)
         return "向你致敬"; /* Olde English */
     case PM_SAMURAI:
         return (mtmp && mtmp->data == &mons[PM_SHOPKEEPER])
-                    ? "いらっしゃいませ"
-                    : "こんにちは"; /* Japanese */
+                    ? "いらっしゃいませ(欢迎光临)"
+                    : "こんにちは(你好)"; /* Japanese */
     case PM_TOURIST:
         return "阿罗哈"; /* Hawaiian */
     case PM_VALKYRIE:
@@ -2148,7 +2148,7 @@ Goodbye(void)
     case PM_KNIGHT:
         return "一路顺风"; /* Olde English */
     case PM_SAMURAI:
-        return "さようなら"; /* Japanese */
+        return "さようなら(再见)"; /* Japanese */
     case PM_TOURIST:
         return "阿罗哈"; /* Hawaiian */
     case PM_VALKYRIE:
