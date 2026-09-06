@@ -2630,7 +2630,7 @@ RESTORE_WARNINGS
 staticfn void
 you_aggravate(struct monst *mtmp)
 {
-    pline("出于某种原因, %s的存在被你知道了.",
+    pline("出于某种原因, 你知道了%s的存在.",
           s_suffix(noit_mon_nam(mtmp)));
     cls();
 #ifdef CLIPPING
