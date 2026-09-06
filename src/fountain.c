@@ -496,7 +496,7 @@ dipfountain(struct obj *obj)
         pline("一种奇怪的刺痛感出现在你的%s上.", body_part(ARM));
         break;
     case 27: /* Strange feeling */
-        You_feel("突然的寒意.");
+        You_feel("到突然的寒意.");
         break;
     case 28: /* Strange feeling */
         pline("想要洗澡的冲动淹没了你.");
