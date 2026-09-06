@@ -2455,7 +2455,7 @@ mkinvokearea(void)
            or if all the walls within range have been dug away; when it does
            appear, it will describe iron bars as "walls" (which is ok) */
         if (wallct)
-            pline_The("你周围的墙壁开始弯曲和崩溃!");
+            pline_The("你周围的墙壁开始弯曲崩塌!");
     }
     display_nhwindow(WIN_MESSAGE, TRUE);
 
