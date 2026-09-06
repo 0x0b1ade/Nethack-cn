@@ -243,7 +243,7 @@ const struct Role roles[NUM_ROLES+1] = {
         { "风之学徒", 0 },
         { "火之学徒", 0 },
         { "长老", 0 } },
-      "哪吒", "太上老君", "混世四猴", /* Chinese */
+      "哪吒", "太上老君", "混世四猴", /* Chinese */ //没错我故意改的，跟dNetHack一样。你知道Shan Lai Ching是什么神吗？你知道黄帝为什么是混沌吗？
       "Mon", "禅",
       "禅顺寺", /*待写:我不知道Chan-Sune是什么，翻遍了所有我能查到的汉语方言和外语汉字音都不知道是什么，姑且这么猜吧*/
       "土地庙", /*这真的是土地庙吗？？？*/
@@ -413,7 +413,7 @@ const struct Role roles[NUM_ROLES+1] = {
       SPE_INVISIBILITY,
       -4 },
     { { "武士", 0 },
-      { { "旗本", 0 },       /* Banner Knight */
+      { { "旗本", 0 },       /* Banner Knight */ //译者问:旗本<浪人<忍者???
         { "浪人", 0 },          /* no allegiance */
         { "忍者", "くノ一" }, /* secret society */ /*待写:くノ一（kunoichi）三笔连在一起为“女”*/
         { "城主", 0 },          /* heads a castle */
