@@ -119,7 +119,7 @@ zoo_mon_sound(struct monst *mtmp)
         int hallu = Hallucination ? 1 : 0, selection = rn2(2) + hallu;
         static const char *const zoo_msg[3] = {
             "类似大象踩碎坚果的声音.",
-            "类似海豹叫声的声音", "怪医杜立德!",
+            "类似海豹叫声的声音.", "怪医杜立德!",
         };
         You_hear1(zoo_msg[selection]);
         return TRUE;
