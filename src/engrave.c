@@ -379,7 +379,7 @@ read_engr_at(coordxy x, coordxy y)
         case HEADSTONE:
             if (!Blind || can_reach_floor(TRUE)) {
                 sensed = 1;
-                pline("%s被刻在%s上.", Something, eloc);
+                pline("%s刻在%s上.", Something, eloc);
             }
             break;
         case BURN:
