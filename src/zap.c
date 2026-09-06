@@ -6387,7 +6387,7 @@ makewish(void)
     } else if (otmp == &nothing) {
         /* explicitly wished for "nothing", presumably attempting
            to retain wishless conduct */
-        livelog_printf(LL_WISH, "declined to make a wish");
+        livelog_printf(LL_WISH, "放弃了一次许愿");
         return;
     } else if (otmp == &hands_obj) {
         wish_history_add(bufcpy);
@@ -6403,7 +6403,7 @@ makewish(void)
 
     /* wisharti conduct handled in readobjnam() */
     maybe_LL_arti = ((oldwisharti < u.uconduct.wisharti) ? LL_ARTIFACT : 0L);
-    Snprintf(wish, sizeof wish, "\"%s\", 实际获得\"%s\"", bufcpy, doname(otmp));
+    Snprintf(wish, sizeof wish, "\"%s\", 得到了\"%s\"", bufcpy, doname(otmp));
     /* KMH, conduct */
     if (!u.uconduct.wishes++)
         livelog_printf((LL_CONDUCT | LL_WISH | maybe_LL_arti),
