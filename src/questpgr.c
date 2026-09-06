@@ -252,7 +252,7 @@ convert_arg(char c)
         str = rank_of(MIN_QUEST_LEVEL, Role_switch, flags.female);
         break;
     case 's':
-        str = (flags.female) ? "姐姐" : "哥哥";
+        str = (flags.female) ? "姐妹" : "兄弟";
         break;
     case 'S':
         str = (flags.female) ? "女儿" : "儿子";
