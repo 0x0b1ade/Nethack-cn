@@ -1953,7 +1953,7 @@ find_trap(struct trap *trap)
     }
 
     set_msg_xy(trap->tx, trap->ty);
-    You("找到了%s.", an(trapname(trap->ttyp, FALSE)));
+    You("发现了%s.", an(trapname(trap->ttyp, FALSE)));
 
     if (cleared) {
         display_nhwindow(WIN_MAP, TRUE); /* wait */
@@ -2005,7 +2005,7 @@ mfind0(struct monst *mtmp, boolean via_warning)
             You_feel("到一个看不见的怪物!");
         } else if (!sensemon(mtmp)) {
             set_msg_xy(x, y);
-            You("找到了%s.", mtmp->mtame ? y_monnam(mtmp) : a_monnam(mtmp));
+            You("发现了%s.", mtmp->mtame ? y_monnam(mtmp) : a_monnam(mtmp));
         }
         return 1;
     }
@@ -2048,7 +2048,7 @@ dosearch0(int aflag) /* intrinsic autosearch vs explicit searching */
                     nomul(0);
                     feel_location(x, y); /* make sure it shows up */
                     set_msg_xy(x, y);
-                    You("找到了一扇暗门.");
+                    You("发现了一扇暗门.");
                 } else if (levl[x][y].typ == SCORR) {
                     if (rnl(7 - fund))
                         continue;
@@ -2058,7 +2058,7 @@ dosearch0(int aflag) /* intrinsic autosearch vs explicit searching */
                     nomul(0);
                     feel_newsym(x, y); /* make sure it shows up */
                     set_msg_xy(x, y);
-                    You("找到了一条暗道.");
+                    You("发现了一条暗道.");
                 } else {
                     /* Be careful not to find anything in an SCORR or SDOOR */
                     if ((mtmp = m_at(x, y)) != 0 && !aflag) {
