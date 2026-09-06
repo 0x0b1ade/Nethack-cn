@@ -6203,7 +6203,7 @@ wishcmdassist(int triesleft)
     },
         preserve_wishless[] = "这样做不会破坏'禁许愿'挑战.",
         retry_info[] =
-                    "如果你指定一种未鉴定的物品%s%s次%s, 你将获得一件随机物品.",
+                    "如果你指定一种未鉴定的物品%s次%s%s, 你将获得一件随机物品.",
         //冗余:retry_too[] = "你将获得一件随机物品.",
         suppress_cmdassist[] =
             "(在配置文件中添加!cmdassist以禁用此辅助功能. )",
