@@ -893,7 +893,7 @@ mon_wield_item(struct monst *mon)
                       Monnam(mon), doname(obj),
                       exclaim ? '!' : '.');
             if ((arw = autoreturn_weapon(obj)) != 0 && arw->tethered != 0)
-                pline_mon(mon, "%s固定好%s的系绳.", Monnam(mon),
+                pline_mon(mon, "%s抓住%s的系绳.", Monnam(mon),
                           the(xname(obj)));
 
             /* 3.6.3: mwelded() predicate expects the object to have its

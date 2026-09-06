@@ -222,7 +222,7 @@ ready_weapon(struct obj *wep)
 
             wep->owornmask |= W_WEP;
             if (wep->otyp == AKLYS && (wep->owornmask & W_WEP) != 0)
-                You("固定好系绳.");
+                You("抓住系绳.");
             prinv((char *) 0, wep, 0L);
             wep->owornmask = dummy;
         }
