@@ -2921,7 +2921,7 @@ speed_up(long duration)
    if (!Very_fast)
        You("突然移动得快%s了.", Fast ? "些" : "多");
    else
-       Your("%s获得了新活力.", makeplural(body_part(LEG)));
+       You("感觉到你的%s有了新的活力.", makeplural(body_part(LEG)));
 
    exercise(A_DEX, TRUE);
    incr_itimeout(&HFast, duration);
