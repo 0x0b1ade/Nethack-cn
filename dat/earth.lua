@@ -14,9 +14,9 @@ des.level_init({ style = "solidfill", fg = " " });
 
 des.level_flags("mazelevel", "noteleport", "hardfloor", "shortsighted")
 
-des.message("Well done, mortal!")
-des.message("But now thou must face the final Test...")
-des.message("Prove thyself worthy or perish!")
+des.message("善哉, 凡人!")
+des.message("然今者, 汝必当极试...")
+des.message("自彰尔堪, 不堪则死!")
 
 -- The player lands, upon arrival, in the
 -- lower-right cavern.  The location of the

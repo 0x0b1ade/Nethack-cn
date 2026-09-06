@@ -9,8 +9,8 @@ des.level_init({ style = "solidfill", fg = " " });
 des.level_flags("mazelevel", "noteleport", "hardfloor", "shortsighted", "stormy")
 -- The following messages are somewhat obtuse, to make then
 -- equally meaningful if the player can see or not.
-des.message("What a strange feeling!")
-des.message("You notice that there is no gravity here.")
+des.message("你感觉很奇怪!")
+des.message("你注意到这里没有重力.")
 -- The player lands, upon arrival, in the
 -- lower-left area.  The location of the
 -- portal to the next level is randomly chosen.

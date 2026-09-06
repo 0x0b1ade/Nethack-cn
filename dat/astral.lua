@@ -7,9 +7,9 @@
 des.level_init({ style = "solidfill", fg = " " });
 
 des.level_flags("mazelevel", "noteleport", "hardfloor", "nommap", "shortsighted", "solidify")
-des.message("You arrive on the Astral Plane!")
-des.message("Here the High Temple of %d is located.")
-des.message("You sense alarm, hostility, and excitement in the air!")
+des.message("你抵达了星界!")
+des.message("%d的高阶神庙坐落于此.")
+des.message("你感觉到空气中弥漫着警觉, 敌意和兴奋!")
 des.map([[
                               ---------------                              
                               |.............|                              
