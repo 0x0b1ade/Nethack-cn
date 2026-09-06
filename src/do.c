@@ -332,7 +332,7 @@ flooreffects(
         if (cansee(x,y)) {
             /* unconditional "ground" is safe as this only runs for
                room and corridor tiles */
-            pline("%s滚烫的地板加热.", Tobjnam(obj, "被")
+            pline("%s滚烫的地板, 便开始升温.", Tobjnam(obj, "一碰到")
                   /*冗余:is_plural(obj) ? "" : ""*/);
         }
 
