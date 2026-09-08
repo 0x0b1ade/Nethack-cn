@@ -339,7 +339,7 @@ curses_askname(void)
 
  bail:
     /* message is delivered via raw_print() */
-    curses_bail("\nUntil next time then...\n");
+    curses_bail("\n那么, 下次见...\n");
     /*NOTREACHED*/
 }
 

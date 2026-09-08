@@ -541,7 +541,7 @@ curses_prev_mesg(void)
     }
     if (!count)
         curses_add_menu(wid, &nul_glyphinfo, &Id, 0, 0,
-                        A_NORMAL, clr, "[No past messages available.]",
+                        A_NORMAL, clr, "[没有历史消息.]",
                         MENU_ITEMFLAGS_NONE);
 
     curses_end_menu(wid, "");
