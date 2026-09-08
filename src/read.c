@@ -3294,10 +3294,6 @@ create_particular_parse(
         d->fem = 0;
         (void) memset(tmpp, ' ', sizeof "公的" - 1);
     }
-    if ((tmpp = strstri(bufp, "公")) != 0) {
-        d->fem = 0;
-        (void) memset(tmpp, ' ', sizeof "公" - 1);
-    }
     bufp = mungspaces(bufp); /* after potential memset(' ') */
     /* allow the initial disposition to be specified */
     if (!strncmpi(bufp, "tame ", 5)) {
