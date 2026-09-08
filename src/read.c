@@ -3305,12 +3305,13 @@ create_particular_parse(
         d->maketame = TRUE;
     } else if (strncmpi(bufp, "女武神", strlen("女武神")) && !strncmpi(bufp, "女", strlen("女"))) {
         bufp += strlen("女");
-        pline("bufp: %s", bufp);
         d->fem = 1;
     } else if (!strncmpi(bufp, "母", strlen("母"))) {
         bufp += strlen("母");
-        pline("bufp: %s", bufp);
         d->fem = 1;
+    } else if (strncmpi(bufp, "公家", strlen("公家")) && !strncmpi(bufp, "公", strlen("公"))) {
+        bufp += strlen("公");
+        d->fem = 0;
     } else if (!strncmpi(bufp, "驯服的", strlen("驯服的"))) {
         bufp += strlen("驯服的");
         d->maketame = TRUE;
