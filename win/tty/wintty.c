@@ -3049,7 +3049,7 @@ tty_end_menu(
     if (cw->npages > 1) {
         char buf[QBUFSZ];
         /* produce the largest demo string */
-        Sprintf(buf, "(页数%ld/%ld) ", cw->npages, cw->npages); /*(%ld %ld)*/
+        Sprintf(buf, "(页数 %ld/%ld) ", cw->npages, cw->npages); /*(%ld %ld)*/
         len = strlen(buf);
         cw->morestr = dupstr("");
     } else {

@@ -416,7 +416,7 @@ tty_get_ext_cmd(void)
               : extcmds_match(buf, ECM_IGNOREAC | ECM_EXACTMATCH, &ecmatches);
     if (nmatches != 1) {
         if (nmatches != -1)
-            pline("%s%.60s: unknown extended command.",
+            pline("%s%.60s: 未知扩展命令.",
                   visctrl(extcmd_char[0]), buf);
         return -1;
     }
