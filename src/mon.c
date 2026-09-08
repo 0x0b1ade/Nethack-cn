@@ -5122,7 +5122,7 @@ wiz_force_cham_form(struct monst *mon)
         if (*buf == '\033')
             break;
         /* for "*", use NON_PM to pick an arbitrary shape below */
-        if (!strcmp(buf, "*") || !strcmpi(buf, "random")) {
+        if (!strcmp(buf, "*") || !strcmpi(buf, "random") || !strcmpi(buf, "随机")) {
             mndx = NON_PM;
             break;
         }

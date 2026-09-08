@@ -526,7 +526,7 @@ polyself(int psflags)
                 }
                 Strcpy(buf, "*"); /* resort to random */
             }
-            if (!strcmp(buf, "*") || !strcmp(buf, "random")) {
+            if (!strcmp(buf, "*") || !strcmp(buf, "random") || !strcmpi(buf, "随机")) {
                 /* explicitly requesting random result */
                 tryct = 0; /* will skip thats_enough_tries */
                 continue;  /* end do-while(--tryct > 0) loop */
