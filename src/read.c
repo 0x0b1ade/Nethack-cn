@@ -3254,10 +3254,6 @@ create_particular_parse(
         d->fem = 1;
         (void) memset(tmpp, ' ', sizeof "女的" - 1);
     }
-    if ((tmpp = strstri(bufp, "女")) != 0) {
-        d->fem = 1;
-        (void) memset(tmpp, ' ', sizeof "女" - 1);
-    }
     if ((tmpp = strstri(bufp, "雌性的")) != 0) {
         d->fem = 1;
         (void) memset(tmpp, ' ', sizeof "雌性的" - 1);
@@ -3269,10 +3265,6 @@ create_particular_parse(
     if ((tmpp = strstri(bufp, "母的")) != 0) {
         d->fem = 1;
         (void) memset(tmpp, ' ', sizeof "母的" - 1);
-    }
-    if ((tmpp = strstri(bufp, "母")) != 0) {
-        d->fem = 1;
-        (void) memset(tmpp, ' ', sizeof "母" - 1);
     }
     if ((tmpp = strstri(bufp, "male ")) != 0) {
         d->fem = 0;
@@ -3310,6 +3302,17 @@ create_particular_parse(
     /* allow the initial disposition to be specified */
     if (!strncmpi(bufp, "tame ", 5)) {
         bufp += 5;
+        d->maketame = TRUE;
+    } else if (strncmpi(bufp, "女武神", strlen("女武神")) && !strncmpi(bufp, "女", strlen("女"))) {
+        bufp += strlen("女");
+        pline("bufp: %s", bufp);
+        d->fem = 1;
+    } else if (!strncmpi(bufp, "母", strlen("母"))) {
+        bufp += strlen("母");
+        pline("bufp: %s", bufp);
+        d->fem = 1;
+    } else if (!strncmpi(bufp, "驯服的", strlen("驯服的"))) {
+        bufp += strlen("驯服的");
         d->maketame = TRUE;
     } else if (!strncmpi(bufp, "驯服的", strlen("驯服的"))) {
         bufp += strlen("驯服的");
