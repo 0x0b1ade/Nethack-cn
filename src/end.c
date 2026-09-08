@@ -248,7 +248,7 @@ done_in_by(struct monst *mtmp, int how)
         else if (the_unique_pm(mptr)) /* "the"; don't use the() here */
             Sprintf(shape, "%s", fakenm);
         else /* "a"/"an" */{
-            Sprintf(shape, "一%s%s", pm_to_quantifier(mptr), fakenm);
+            Sprintf(shape, "一%s%s", pm_to_classifier(mptr), fakenm);
         }
         /* omit "called" to avoid excessive verbosity */
         Sprintf(eos(buf),

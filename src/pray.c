@@ -1817,7 +1817,7 @@ bestow_artifact(uchar max_giftvalue)
 
                 Strcpy(namebuf, simpleonames(otmp));
                 Sprintf(buf, "一%s名为%s的%s",
-                        quantifier(otmp), bare_artifactname(otmp),
+                        classifier(otmp), bare_artifactname(otmp),
                         namebuf);
             }
             at_your_feet(upstart(buf));

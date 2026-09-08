@@ -300,7 +300,7 @@ do_oname(struct obj *obj)
     }
 
     Sprintf(qbuf, "你想要把%s%s",
-            is_plural(obj) ? "这些" : "这", is_plural(obj) ? "" : quantifier(obj));
+            is_plural(obj) ? "这些" : "这", is_plural(obj) ? "" : classifier(obj));
     (void) safe_qbuf(qbuf, qbuf, "命名为什么?", obj, xname, simpleonames, "物品");
     /* use getlin() to get a name string from the player */
     if (!name_from_player(buf, qbuf, safe_oname(obj)))
@@ -417,7 +417,7 @@ oname(
             else
                 livelog_printf(LL_ARTIFACT,
                                "将一%s%s命名成了\"%s\"",
-                               ansimpleoname(obj), quantifier(obj), bare_artifactname(obj));
+                               ansimpleoname(obj), classifier(obj), bare_artifactname(obj));
         }
     }
     if (carried(obj) && !skip_inv_update)
@@ -743,10 +743,10 @@ namefloorobj(void)
               unames[rn2_on_display_rng(SIZE(unames))]);
     } else if (call_ok(obj) == GETOBJ_EXCLUDE) {
         pline("%s%s%s不能被指定类型名字.",
-              use_plural ? "那些" : "那", use_plural ? "" : quantifier(obj), buf);
+              use_plural ? "那些" : "那", use_plural ? "" : classifier(obj), buf);
     } else if (!obj->dknown) {
         You("对%s%s%s了解不多, 所以不能命名%s.",
-            use_plural ? "那些" : "那", use_plural ? "" : quantifier(obj), buf, use_plural ? "它们" : "它");
+            use_plural ? "那些" : "那", use_plural ? "" : classifier(obj), buf, use_plural ? "它们" : "它");
     } else {
         docall(obj);
     }
@@ -1018,7 +1018,7 @@ x_monnam(
     case ARTICLE_A: {
         struct permonst *qdat = do_mappear ? &mons[mtmp->mappearance] : mdat;
 
-        Sprintf(buf2, "一%s", pm_to_quantifier(qdat));
+        Sprintf(buf2, "一%s", pm_to_classifier(qdat));
         break;
     }
     case ARTICLE_NONE:
@@ -1324,7 +1324,7 @@ const char * /* 一+量词+怪物名 */
 an_pmname(struct permonst *pm, int mgender)
 {
     char *outbuf = nextmbuf();
-    const char *quant = pm_to_quantifier(pm);
+    const char *quant = pm_to_classifier(pm);
 
     if (mgender < MALE || mgender >= NUM_MGENDERS || !pm->pmnames[mgender])
         mgender = NEUTRAL;
@@ -1352,7 +1352,7 @@ mon_pmname(struct monst *mon)
 
 /* permonst 的量词: 独特怪没有量词, 其余按类符号 */
 const char *
-pm_to_quantifier(struct permonst *pm)
+pm_to_classifier(struct permonst *pm)
 {
     switch (pm->pmidx)
     {
@@ -1397,11 +1397,11 @@ pm_to_quantifier(struct permonst *pm)
         case PM_DARK_ONE:
             return "";
     }
-    return sym_to_quantifier(pm->mlet);
+    return sym_to_classifier(pm->mlet);
 }
 
 const char *
-terrain_quantifier(int sym)
+terrain_classifier(int sym)
 {
     switch (sym)
     {
@@ -1446,7 +1446,7 @@ terrain_quantifier(int sym)
 }
 
 const char *
-sym_to_quantifier(int sym)
+sym_to_classifier(int sym)
 {
     switch (sym)
     {
@@ -1491,9 +1491,9 @@ sym_to_quantifier(int sym)
 
 /* 怪物的量词: 直接按物种查 */
 const char *
-mon_quantifier(struct monst *mon)
+mon_classifier(struct monst *mon)
 {
-    return pm_to_quantifier(mon->data);
+    return pm_to_classifier(mon->data);
 }
 
 /* mons[]->pmname for a corpse or statue or figurine */

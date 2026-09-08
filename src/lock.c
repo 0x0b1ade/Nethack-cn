@@ -231,7 +231,7 @@ forcelock(void)
             /* for a +0 weapon, probability that it survives an unsuccessful
              * attempt to force the lock is (.992)^50 = .67
              */
-            pline("你的%s%s%s坏了!", (uwep->quan > 1L) ? "其中一" : "", (uwep->quan > 1L) ? quantifier(uwep) : "",
+            pline("你的%s%s%s坏了!", (uwep->quan > 1L) ? "其中一" : "", (uwep->quan > 1L) ? classifier(uwep) : "",
                   xname(uwep));
             useup(uwep);
             You("放弃了尝试强行开锁.");
@@ -1314,7 +1314,7 @@ chest_shatter_msg(struct obj *otmp)
         disposition = "被摧毁了";
         break;
     }
-    pline("一%s%s%s!", quantifier(otmp), thing, disposition);
+    pline("一%s%s%s!", classifier(otmp), thing, disposition);
 }
 
 /*lock.c*/

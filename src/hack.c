@@ -426,7 +426,7 @@ moverock_core(coordxy sx, coordxy sy)
         if (verysmall(gy.youmonst.data) && !u.usteed) {
             if (Blind)
                 feel_location(sx, sy);
-            pline("你太小了, 推不动那%s%s.", quantifier(otmp), xname(otmp));
+            pline("你太小了, 推不动那%s%s.", classifier(otmp), xname(otmp));
             return cannot_push(otmp, sx, sy);
         }
         if (isok(rx, ry) && !IS_OBSTRUCTED(levl[rx][ry].typ)
@@ -1062,7 +1062,7 @@ test_move(
                     if (sym == S_stone)
                         Strcpy(buf, "坚硬的石头");
                     else if (sym >= 0)
-                        Sprintf(buf, "一%s%s", terrain_quantifier(sym), defsyms[sym].explanation); //我懒得写量词了,,,
+                        Sprintf(buf, "一%s%s", terrain_classifier(sym), defsyms[sym].explanation); //我懒得写量词了,,,
                     else
                         Sprintf(buf, "不可能的 [背景字形=%d]",
                                 glyph);

@@ -513,7 +513,7 @@ safe_etypename(int otyp)
 }
 
 const char *
-quantifier(struct obj *obj)
+classifier(struct obj *obj)
 {
     switch (obj->otyp)
     {
@@ -670,8 +670,8 @@ quantifier(struct obj *obj)
     return "个";
 }
 
-static const char* quantifiers[] = {"块", "双", "柄", "片", "根", "把", "个", "件", "盏", "卷", "枝", "本", "面", "座", "枚", "只", "套", "副", "团", "份", "具", "支", "瓶", "瓣", "张", "顶", "条", "\0"};
-static const char* one_quantifiers[] = {"一块", "一双", "一柄", "一片", "一根", "一把", "一个", "一件", "一盏", "一卷", "一枝", "一本", "一面", "一座", "一枚", "一只", "一套", "一副", "一团", "一份", "一具", "一支", "一瓶", "一瓣", "一张", "一顶", "一条", "\0"};
+static const char* classifiers[] = {"块", "双", "柄", "片", "根", "把", "个", "件", "盏", "卷", "枝", "本", "面", "座", "枚", "只", "套", "副", "团", "份", "具", "支", "瓶", "瓣", "张", "顶", "条", "\0"};
+static const char* one_classifiers[] = {"一块", "一双", "一柄", "一片", "一根", "一把", "一个", "一件", "一盏", "一卷", "一枝", "一本", "一面", "一座", "一枚", "一只", "一套", "一副", "一团", "一份", "一具", "一支", "一瓶", "一瓣", "一张", "一顶", "一条", "\0"};
 
 boolean
 obj_is_pname(struct obj *obj)
@@ -2017,7 +2017,7 @@ mshot_xname(struct obj *obj)
     if (gm.m_shot.n > 1 && gm.m_shot.o == obj->otyp) {
         /* "the Nth arrow"; value will eventually be passed to an() or
            The(), both of which correctly handle this "the " prefix */
-        Sprintf(tmpbuf, "第%d%s", gm.m_shot.i, quantifier(obj));
+        Sprintf(tmpbuf, "第%d%s", gm.m_shot.i, classifier(obj));
         onm = strprepend(onm, tmpbuf);
     }
     return onm;
@@ -2207,7 +2207,7 @@ erosion_matters(struct obj *obj)
 #define DONAME_FOR_MENU     4 /* [not used anywhere yet] */
 #define DONAME_FORCE_GENDER 8 /* always add male or female */
 #define DONAME_WITH_SPACE 64 /* 官方的下一个bitmask肯定是16, 留个位置 */
-#define DONAME_FORCE_QUAN 128 /* "1个foo"而非"一个foo"/"foo" */
+#define DONAME_FORCE_CLASS 128 /* "1个foo"而非"一个foo"/"foo" */
 
 /* core of doname() */
 staticfn char *
@@ -2221,7 +2221,7 @@ doname_base(
             for_menu = (doname_flags & DONAME_FOR_MENU) != 0,
             with_corpse_genders = (doname_flags & DONAME_FORCE_GENDER) != 0,
             with_space = (doname_flags & DONAME_WITH_SPACE) != 0,
-            force_quan = (doname_flags & DONAME_FORCE_QUAN) != 0;
+            force_class = (doname_flags & DONAME_FORCE_CLASS) != 0;
     boolean known, dknown, cknown, bknown, lknown,
             fake_arti, force_the;
     char prefix[PREFIX];
@@ -2281,14 +2281,14 @@ doname_base(
                 || !(the_unique_pm(&mons[obj->corpsenm])
                      || type_is_pname(&mons[obj->corpsenm]))) {
                 if (with_space) {
-                    if (obj->quan != 1L || force_quan) {
-                        Sprintf(prefix, "%ld %s", obj->quan, quantifier(obj));
+                    if (obj->quan != 1L || force_class) {
+                        Sprintf(prefix, "%ld %s", obj->quan, classifier(obj));
                     }
                 } else {
-                    if (obj->quan != 1L || force_quan) {
-                        Sprintf(prefix, "%ld%s", obj->quan, quantifier(obj));
+                    if (obj->quan != 1L || force_class) {
+                        Sprintf(prefix, "%ld%s", obj->quan, classifier(obj));
                     } else if (obj->quan == 1L) {
-                        Sprintf(prefix, "一%s", quantifier(obj));
+                        Sprintf(prefix, "一%s", classifier(obj));
                     }
                 }
             }
@@ -2848,16 +2848,16 @@ doname_with_space(struct obj *obj)
 }
 
 char *
-doname_force_quan(struct obj *obj)
+doname_force_class(struct obj *obj)
 {
-    return doname_base(obj, DONAME_FORCE_QUAN);
+    return doname_base(obj, DONAME_FORCE_CLASS);
 }
 
 /* 排列组合... */
 char *
-doname_with_space_force_quan(struct obj *obj)
+doname_with_space_force_class(struct obj *obj)
 {
-    return doname_base(obj, DONAME_WITH_SPACE | DONAME_FORCE_QUAN);
+    return doname_base(obj, DONAME_WITH_SPACE | DONAME_FORCE_CLASS);
 }
 
 char *
@@ -2879,27 +2879,27 @@ doname_with_price_and_cgender_and_space(struct obj *obj)
 }
 
 char *
-doname_with_price_force_quan(struct obj *obj)
+doname_with_price_force_class(struct obj *obj)
 {
-    return doname_base(obj, DONAME_WITH_PRICE | DONAME_FORCE_QUAN);
+    return doname_base(obj, DONAME_WITH_PRICE | DONAME_FORCE_CLASS);
 }
 
 char *
-doname_with_price_and_cgender_force_quan(struct obj *obj)
+doname_with_price_and_cgender_force_class(struct obj *obj)
 {
-    return doname_base(obj, DONAME_WITH_PRICE | DONAME_FORCE_GENDER | DONAME_FORCE_QUAN);
+    return doname_base(obj, DONAME_WITH_PRICE | DONAME_FORCE_GENDER | DONAME_FORCE_CLASS);
 }
 
 char *
-doname_with_price_and_space_force_quan(struct obj *obj)
+doname_with_price_and_space_force_class(struct obj *obj)
 {
-    return doname_base(obj, DONAME_WITH_SPACE | DONAME_WITH_PRICE | DONAME_FORCE_QUAN);
+    return doname_base(obj, DONAME_WITH_SPACE | DONAME_WITH_PRICE | DONAME_FORCE_CLASS);
 }
 
 char *
-doname_with_price_and_cgender_and_space_force_quan(struct obj *obj)
+doname_with_price_and_cgender_and_space_force_class(struct obj *obj)
 {
-    return doname_base(obj, DONAME_WITH_SPACE | DONAME_WITH_PRICE | DONAME_FORCE_GENDER | DONAME_FORCE_QUAN);
+    return doname_base(obj, DONAME_WITH_SPACE | DONAME_WITH_PRICE | DONAME_FORCE_GENDER | DONAME_FORCE_CLASS);
 }
 
 /* "some" instead of precise quantity if obj->dknown not set */
@@ -3139,7 +3139,7 @@ killer_xname(struct obj *obj)
     }
     /* apply an article if appropriate; caller should always use KILLED_BY */
     if (obj->quan == 1L && !strstri(buf, "'s ") && !strstri(buf, "s' ")){
-        Sprintf(buf, "一%s%s", quantifier(obj), buf);//危险:buf = (obj_is_pname(obj) || the_unique_obj(obj)) ? the(buf) : an(buf);
+        Sprintf(buf, "一%s%s", classifier(obj), buf);//危险:buf = (obj_is_pname(obj) || the_unique_obj(obj)) ? the(buf) : an(buf);
     }
     objects[obj->otyp].oc_name_known = save_ocknown;
     objects[obj->otyp].oc_uname = save_ocuname;
@@ -3386,7 +3386,7 @@ aobjnam(struct obj *otmp, const char *verb)
     char *bp = cxname(otmp);
 
     if (otmp->quan != 1L) {
-        Sprintf(prefix, "%ld%s", otmp->quan, quantifier(otmp));
+        Sprintf(prefix, "%ld%s", otmp->quan, classifier(otmp));
         bp = strprepend(bp, prefix);
     }
     if (verb) {
@@ -3619,7 +3619,7 @@ ansimpleoname(struct obj *obj)
         char namebuf[BUFSZ];
 
         Strcpy(namebuf, simpleoname);
-        Sprintf(simpleoname, "一%s%s", quantifier(obj), namebuf);
+        Sprintf(simpleoname, "一%s%s", classifier(obj), namebuf);
     }
     return simpleoname;
 }
@@ -5812,7 +5812,7 @@ readobjnam_preparse(struct _readobjnam_data *d)
             !cnstrcmpi(d->bp, "一只", l) || !cnstrcmpi(d->bp, "一套", l) || !cnstrcmpi(d->bp, "一副", l) ||
             !cnstrcmpi(d->bp, "一团", l) || !cnstrcmpi(d->bp, "一份", l) || !cnstrcmpi(d->bp, "一具", l) ||
             !cnstrcmpi(d->bp, "一支", l) || !cnstrcmpi(d->bp, "一瓶", l) || !cnstrcmpi(d->bp, "一瓣", l) ||
-            !cnstrcmpi(d->bp, "一张", l) || !cnstrcmpi(d->bp, "一顶", l) || !cnstrcmpi(d->bp, "一条", l)) { //见one_quantifiers
+            !cnstrcmpi(d->bp, "一张", l) || !cnstrcmpi(d->bp, "一顶", l) || !cnstrcmpi(d->bp, "一条", l)) { //见one_classifiers
             d->cnt = 1;
         } else if (!strncmpi(d->bp, "the ", l = 4)) {
             ; /* just increment `bp' by `l' below */
@@ -5839,7 +5839,7 @@ readobjnam_preparse(struct _readobjnam_data *d)
                    !cnstrcmpi(d->bp, "套", l) || !cnstrcmpi(d->bp, "副", l) || !cnstrcmpi(d->bp, "团", l) ||
                    !cnstrcmpi(d->bp, "份", l) || !cnstrcmpi(d->bp, "具", l) || !cnstrcmpi(d->bp, "支", l) ||
                    !cnstrcmpi(d->bp, "瓶", l) || !cnstrcmpi(d->bp, "瓣", l) || !cnstrcmpi(d->bp, "张", l) ||
-                   !cnstrcmpi(d->bp, "顶", l) || !cnstrcmpi(d->bp, "条", l)) { //见quantifiers
+                   !cnstrcmpi(d->bp, "顶", l) || !cnstrcmpi(d->bp, "条", l)) { //见classifiers
             ; //pass
         } else if (!cnstrcmpi(d->bp, "菠菜", l) || !cnstrcmpi(d->bp, "菠菜的", l)) {
             d->contents = TIN_SPINACH;

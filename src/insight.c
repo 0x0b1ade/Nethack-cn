@@ -1302,7 +1302,7 @@ weapon_insight(int final)
             Sprintf(buf, "手持着%s", what);}
         else{
             /* [maybe include known blessed?] */
-            Sprintf(buf, "装备着%s%s%s", (uwep->quan == 1L) ? "一" : "", (uwep->quan == 1L) ? quantifier(uwep) : "",
+            Sprintf(buf, "装备着%s%s%s", (uwep->quan == 1L) ? "一" : "", (uwep->quan == 1L) ? classifier(uwep) : "",
                     what);}
         you_are(buf, "");
     }
@@ -2034,7 +2034,7 @@ youhiding(boolean via_enlghtmt, /* enlightenment line vs topl message */
            for the hypothetical furniture and monster cases */
         bp = eos(strcpy(buf, "在模拟"));
         if (U_AP_TYPE == M_AP_OBJECT) {
-            Sprintf(bp, "一%s%s", mon_quantifier(&gy.youmonst), simple_typename(gy.youmonst.mappearance));
+            Sprintf(bp, "一%s%s", mon_classifier(&gy.youmonst), simple_typename(gy.youmonst.mappearance));
         } else if (U_AP_TYPE == M_AP_FURNITURE) {
             Strcpy(bp, "什么东西");
         } else if (U_AP_TYPE == M_AP_MONSTER) {
@@ -2906,7 +2906,7 @@ list_vanquished(char defquery, boolean ask)
                     /*冗余: if (nkilled == 1)
                         Strcpy(buf, an(mons[i].pmnames[NEUTRAL]));
                     else*/
-                        Sprintf(buf, "%3d %s%s", nkilled, pm_to_quantifier(&mons[i]), //待写:1只电子虫 or 1 只电子虫哪个更好？
+                        Sprintf(buf, "%3d %s%s", nkilled, pm_to_classifier(&mons[i]), //待写:1只电子虫 or 1 只电子虫哪个更好？
                                 makeplural(mons[i].pmnames[NEUTRAL]));
                 }
                 /* number of leading spaces to match 3 digit prefix */

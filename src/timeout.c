@@ -1097,7 +1097,7 @@ hatch_egg(anything *arg, long timeout)
         if (cansee_hatchspot) {
             /* [bug?  m_monnam() yields accurate monster type
                regardless of hallucination] */
-            Sprintf(monnambuf, "%s%s%s", siblings ? "一些" : "一", siblings ? "" : mon_quantifier(mon),
+            Sprintf(monnambuf, "%s%s%s", siblings ? "一些" : "一", siblings ? "" : mon_classifier(mon),
                     m_monnam(mon));//冗余:siblings ? makeplural(m_monnam(mon)) : m_monnam(mon));
             /* we don't learn the egg type here because learning
                an egg type requires either seeing the egg hatch
@@ -1350,7 +1350,7 @@ see_lamp_flicker(struct obj *obj, const char *tailer)
         pline("%s在闪烁%s.", Yname2(obj), tailer);
         break;
     case OBJ_FLOOR:
-        You_see("一%s%s在闪烁%s.", quantifier(obj), xname(obj), tailer);
+        You_see("一%s%s在闪烁%s.", classifier(obj), xname(obj), tailer);
         break;
     }
 }
@@ -1497,7 +1497,7 @@ burn_object(anything *arg, long timeout)
                         pline("%s看上去要熄灭了.", Yname2(obj));
                         break;
                     case OBJ_FLOOR:
-                        You_see("一%s%s快要熄灭了.", quantifier(obj), xname(obj));
+                        You_see("一%s%s快要熄灭了.", classifier(obj), xname(obj));
                         break;
                     }
                 }
@@ -1522,7 +1522,7 @@ burn_object(anything *arg, long timeout)
                     if (obj->otyp == BRASS_LANTERN)
                         You_see("一盏灯笼燃尽了.");
                     else
-                        You_see("一%s%s燃尽了.", quantifier(obj), xname(obj));
+                        You_see("一%s%s燃尽了.", classifier(obj), xname(obj));
                     break;
                 }
             }
@@ -1618,7 +1618,7 @@ burn_object(anything *arg, long timeout)
                           You see a wax candle consumed!
                          */
                         You_see("一%s%s燃尽了!", //冗余:many ? "" : "",
-                                many ? "些" : quantifier(obj), xname(obj));
+                                many ? "些" : classifier(obj), xname(obj));
                         need_newsym = TRUE;
                         break;
                     }

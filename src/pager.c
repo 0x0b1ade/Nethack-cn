@@ -210,7 +210,7 @@ mhidden_description(
             what = defsyms[mon->mappearance].explanation;
             if (incl_article)
                 Sprintf(eos(outbuf), "一%s%s",
-                        terrain_quantifier(mon->mappearance), what);
+                        terrain_classifier(mon->mappearance), what);
             else
                 Strcat(outbuf, what);
             Strcat(outbuf, ")");
@@ -225,7 +225,7 @@ mhidden_description(
                    : obj_descr[STRANGE_OBJECT].oc_name;
             if (incl_article && (!otmp || otmp->quan == 1L))
                 Sprintf(eos(outbuf), "一%s%s",
-                        otmp ? quantifier(otmp) : "个", what);
+                        otmp ? classifier(otmp) : "个", what);
             else
                 Strcat(outbuf, what);
 

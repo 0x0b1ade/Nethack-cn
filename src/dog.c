@@ -82,7 +82,7 @@ initedog(struct monst *mtmp, boolean everything)
          * using an() is safe unless it somehow becomes possible to tame a
          * unique monster */
         livelog_printf(LL_CONDUCT, "获得了%s的第一只宠物 (一%s%s)",
-                       uhis(), mon_quantifier(mtmp), mon_pmname(mtmp));
+                       uhis(), mon_classifier(mtmp), mon_pmname(mtmp));
     }
     u.uconduct.pets++;
 }

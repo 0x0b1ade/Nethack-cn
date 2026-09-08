@@ -642,7 +642,7 @@ dismount_steed(
             return;
         }
         if (!has_mgivenname(mtmp)) {
-            pline("你骑着一%s无名的%s横穿了地牢.", mon_quantifier(mtmp),
+            pline("你骑着一%s无名的%s横穿了地牢.", mon_classifier(mtmp),
                   pmname(mtmp->data, Mgender(mtmp)));
             if (Hallucination)
                 pline("走出雨中的感觉真好.");

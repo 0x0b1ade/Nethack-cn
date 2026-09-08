@@ -836,7 +836,7 @@ use_leash_core(struct obj *obj, struct monst *mtmp, coord *cc, int spotmon)
     } else if (!obj->leashmon) {
         /* applying a leash which isn't currently in use */
         if (mtmp->mleashed) {
-            pline("这%s%s已经被拴着了.", mon_quantifier(mtmp),
+            pline("这%s%s已经被拴着了.", mon_classifier(mtmp),
                   spotmon ? l_monnam(mtmp) : "怪物");
         } else if (unsolid(mtmp->data)) {
             pline("狗链会掉下来.");
@@ -1331,7 +1331,7 @@ use_candelabrum(struct obj *obj)
     if (obj->spe <= 0) {
         struct obj *otmp;
 
-        pline("这%s%s没有%s.", quantifier(obj), xname(obj), s);
+        pline("这%s%s没有%s.", classifier(obj), xname(obj), s);
         /* only output tip if candles are in inventory */
         for (otmp = gi.invent; otmp; otmp = otmp->nobj)
             if (Is_candle(otmp))
@@ -1665,7 +1665,7 @@ use_lamp(struct obj *obj)
             else
                 pline("%s", nothing_seems_to_happen);
         } else {
-            pline("这%s%s燃尽了.", quantifier(obj), xname(obj));
+            pline("这%s%s燃尽了.", classifier(obj), xname(obj));
         }
         return;
     }
@@ -2430,7 +2430,7 @@ fig_transform(anything *arg, long timeout)
         struct obj *mshelter = svl.level.objects[mtmp->mx][mtmp->my];
 
         /* [m_monnam() yields accurate mon type, overriding hallucination] */
-        Sprintf(monnambuf, "一%s%s", mon_quantifier(mtmp), m_monnam(mtmp));
+        Sprintf(monnambuf, "一%s%s", mon_classifier(mtmp), m_monnam(mtmp));
         and_vanish[0] = '\0';
         if ((mtmp->minvis && !See_invisible)
             || (mtmp->data->mlet == S_MIMIC
@@ -3158,7 +3158,7 @@ use_whip(struct obj *obj)
             const char *mon_hand;
             boolean gotit = proficient && (!Fumbling || !rn2(10));
 
-            Sprintf(onambuf, "%s%s%s", (otmp->quan == 1L) ? "一" : "", (otmp->quan == 1L) ? quantifier(otmp) : "", cxname(otmp)); //Strcpy(onambuf, cxname(otmp));
+            Sprintf(onambuf, "%s%s%s", (otmp->quan == 1L) ? "一" : "", (otmp->quan == 1L) ? classifier(otmp) : "", cxname(otmp)); //Strcpy(onambuf, cxname(otmp));
             if (gotit) {
                 mon_hand = mbodypart(mtmp, HAND);
                 if (bimanual(otmp))
@@ -3582,7 +3582,7 @@ use_cream_pie(struct obj *obj)
         You("给自己做面膜.");
     else
         You("把你的%s浸入到%s%s%s里.", body_part(FACE),
-              several ? "一" : "", quantifier(obj),
+              several ? "一" : "", classifier(obj),
               several ? makeplural(the(xname(obj))) : the(xname(obj)));
     if (can_blnd((struct monst *) 0, &gy.youmonst, AT_WEAP, obj)) {
         int blindinc = rnd(25);
@@ -3654,7 +3654,7 @@ use_royal_jelly(struct obj **optr)
 
     if (obj->cursed) {
         if (eobj->timed || eobj->corpsenm != oldcorpsenm)
-            pline("这%s%s在微弱地%s.", quantifier(obj), xname(eobj), otense(eobj, "颤抖"));
+            pline("这%s%s在微弱地%s.", classifier(obj), xname(eobj), otense(eobj, "颤抖"));
         else
             pline("%s", nothing_seems_to_happen);
         kill_egg(eobj);
