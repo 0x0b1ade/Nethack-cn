@@ -3172,42 +3172,169 @@ create_particular_parse(
         d->saddled = TRUE;
         (void) memset(tmpp, ' ', sizeof "saddled " - 1);
     }
+    if ((tmpp = strstri(bufp, "装有鞍的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "装有鞍的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "上鞍的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "上鞍的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "装鞍的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "装鞍的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "有鞍的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "有鞍的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "带鞍的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "带鞍的" - 1);
+    }
     /* state -- limited number of possibilities supported */
     if ((tmpp = strstri(bufp, "sleeping ")) != 0) {
         d->sleeping = TRUE;
         (void) memset(tmpp, ' ', sizeof "sleeping " - 1);
     }
+    if ((tmpp = strstri(bufp, "睡觉的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "睡觉的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "正在睡觉的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "正在睡觉的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "睡着的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "睡着的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "睡着了的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "睡着了的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "睡眠的")) != 0) {
+        d->saddled = TRUE;
+        (void) memset(tmpp, ' ', sizeof "睡眠的" - 1);
+    }
     if ((tmpp = strstri(bufp, "invisible ")) != 0) {
         d->invisible = TRUE;
         (void) memset(tmpp, ' ', sizeof "invisible " - 1);
     }
+    if ((tmpp = strstri(bufp, "隐形的")) != 0) {
+        d->invisible = TRUE;
+        (void) memset(tmpp, ' ', sizeof "隐形的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "隐身的")) != 0) {
+        d->invisible = TRUE;
+        (void) memset(tmpp, ' ', sizeof "隐身的" - 1);
+    }
     if ((tmpp = strstri(bufp, "hidden ")) != 0) {
         d->hidden = TRUE;
         (void) memset(tmpp, ' ', sizeof "hidden " - 1);
+    }
+    if ((tmpp = strstri(bufp, "隐藏的")) != 0) {
+        d->hidden = TRUE;
+        (void) memset(tmpp, ' ', sizeof "隐藏的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "藏起来的")) != 0) {
+        d->hidden = TRUE;
+        (void) memset(tmpp, ' ', sizeof "藏起来的" - 1);
     }
     /* check "female" before "male" to avoid false hit mid-word */
     if ((tmpp = strstri(bufp, "female ")) != 0) {
         d->fem = 1;
         (void) memset(tmpp, ' ', sizeof "female " - 1);
     }
+    if ((tmpp = strstri(bufp, "女性的")) != 0) {
+        d->fem = 1;
+        (void) memset(tmpp, ' ', sizeof "女性的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "女的")) != 0) {
+        d->fem = 1;
+        (void) memset(tmpp, ' ', sizeof "女的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "女")) != 0) {
+        d->fem = 1;
+        (void) memset(tmpp, ' ', sizeof "女" - 1);
+    }
+    if ((tmpp = strstri(bufp, "雌性的")) != 0) {
+        d->fem = 1;
+        (void) memset(tmpp, ' ', sizeof "雌性的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "雌性")) != 0) {
+        d->fem = 1;
+        (void) memset(tmpp, ' ', sizeof "雌性" - 1);
+    }
+    if ((tmpp = strstri(bufp, "母的")) != 0) {
+        d->fem = 1;
+        (void) memset(tmpp, ' ', sizeof "母的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "母")) != 0) {
+        d->fem = 1;
+        (void) memset(tmpp, ' ', sizeof "母" - 1);
+    }
     if ((tmpp = strstri(bufp, "male ")) != 0) {
         d->fem = 0;
         (void) memset(tmpp, ' ', sizeof "male " - 1);
+    }
+    if ((tmpp = strstri(bufp, "男性的")) != 0) {
+        d->fem = 0;
+        (void) memset(tmpp, ' ', sizeof "男性的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "男的")) != 0) {
+        d->fem = 0;
+        (void) memset(tmpp, ' ', sizeof "男的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "男")) != 0) {
+        d->fem = 0;
+        (void) memset(tmpp, ' ', sizeof "男" - 1);
+    }
+    if ((tmpp = strstri(bufp, "雄性的")) != 0) {
+        d->fem = 0;
+        (void) memset(tmpp, ' ', sizeof "雄性的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "雄性")) != 0) {
+        d->fem = 0;
+        (void) memset(tmpp, ' ', sizeof "雄性" - 1);
+    }
+    if ((tmpp = strstri(bufp, "公的")) != 0) {
+        d->fem = 0;
+        (void) memset(tmpp, ' ', sizeof "公的" - 1);
+    }
+    if ((tmpp = strstri(bufp, "公")) != 0) {
+        d->fem = 0;
+        (void) memset(tmpp, ' ', sizeof "公" - 1);
     }
     bufp = mungspaces(bufp); /* after potential memset(' ') */
     /* allow the initial disposition to be specified */
     if (!strncmpi(bufp, "tame ", 5)) {
         bufp += 5;
         d->maketame = TRUE;
+    } else if (!strncmpi(bufp, "驯服的", strlen("驯服的"))) {
+        bufp += strlen("驯服的");
+        d->maketame = TRUE;
+    } else if (!strncmpi(bufp, "顺服的", strlen("顺服的"))){
+        bufp += strlen("顺服的");
+        d->maketame = TRUE;
     } else if (!strncmpi(bufp, "peaceful ", 9)) {
         bufp += 9;
+        d->makepeaceful = TRUE;
+    } else if (!strncmpi(bufp, "和平的", strlen("和平的"))) {
+        bufp += strlen("和平的");
+        d->makepeaceful = TRUE;
+    } else if (!strncmpi(bufp, "平和的", strlen("平和的"))){
+        bufp += strlen("平和的");
         d->makepeaceful = TRUE;
     } else if (!strncmpi(bufp, "hostile ", 8)) {
         bufp += 8;
         d->makehostile = TRUE;
+    } else if (!strncmpi(bufp, "敌对的", strlen("敌对的"))) {
+        bufp += strlen("敌对的");
+        d->makehostile = TRUE;
     }
     /* decide whether a valid monster was chosen */
-    if (wizard && (!strcmp(bufp, "*") || !strcmp(bufp, "random"))) {
+    if (wizard && (!strcmp(bufp, "*") || !strcmp(bufp, "random")) || !strcmp(bufp, "随机")) {
         d->randmonst = TRUE;
         return TRUE;
     }
