@@ -3198,23 +3198,23 @@ create_particular_parse(
         (void) memset(tmpp, ' ', sizeof "sleeping " - 1);
     }
     if ((tmpp = strstri(bufp, "睡觉的")) != 0) {
-        d->saddled = TRUE;
+        d->sleeping = TRUE;
         (void) memset(tmpp, ' ', sizeof "睡觉的" - 1);
     }
     if ((tmpp = strstri(bufp, "正在睡觉的")) != 0) {
-        d->saddled = TRUE;
+        d->sleeping = TRUE;
         (void) memset(tmpp, ' ', sizeof "正在睡觉的" - 1);
     }
     if ((tmpp = strstri(bufp, "睡着的")) != 0) {
-        d->saddled = TRUE;
+        d->sleeping = TRUE;
         (void) memset(tmpp, ' ', sizeof "睡着的" - 1);
     }
     if ((tmpp = strstri(bufp, "睡着了的")) != 0) {
-        d->saddled = TRUE;
+        d->sleeping = TRUE;
         (void) memset(tmpp, ' ', sizeof "睡着了的" - 1);
     }
     if ((tmpp = strstri(bufp, "睡眠的")) != 0) {
-        d->saddled = TRUE;
+        d->sleeping = TRUE;
         (void) memset(tmpp, ' ', sizeof "睡眠的" - 1);
     }
     if ((tmpp = strstri(bufp, "invisible ")) != 0) {
@@ -3334,7 +3334,7 @@ create_particular_parse(
         d->makehostile = TRUE;
     }
     /* decide whether a valid monster was chosen */
-    if (wizard && (!strcmp(bufp, "*") || !strcmp(bufp, "random")) || !strcmp(bufp, "随机")) {
+    if (wizard && (!strcmp(bufp, "*") || !strcmp(bufp, "random") || !strcmp(bufp, "随机"))) {
         d->randmonst = TRUE;
         return TRUE;
     }
